@@ -168,6 +168,7 @@ export class ComponentsComponent implements OnInit {
           )
         ).subscribe(data => {
           this.prog = data;
+          console.log(this.prog)
         });
 
       }
