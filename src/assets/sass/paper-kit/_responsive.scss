@@ -690,3 +690,18 @@
         }
     }
 }
+@media (max-width: 490px){
+    #jurusan{
+        margin-top: 280px;
+        
+    }
+   
+}
+@media screen and (min-width: 490px){
+    #jurusan{
+        margin-top: 150px;
+    }
+    .container{
+        overflow-y: auto;
+    }
+}

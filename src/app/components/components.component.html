@@ -1,11 +1,11 @@
-<div class="wrapper">
-    <div class="page-header section-dark" style="background-image: url('assets/img/landscape2.jpg')">
+<div class="wrapper"  >
+    <div class="page-header section-dark" style="background-image: url('assets/img/landscape2.jpg')" >
         
         <!-- <div class="filter"></div> -->
         
         <!-- <div class="content-center"> -->
-            
-            <div class="container" style="margin-top: 100px;">
+         
+            <div class="container" >
                 <div *ngIf="!obtainedData">
                  <div class="row">
                     <div class="col-md-4"></div>
@@ -80,10 +80,79 @@
                                 <div *ngIf="submitted && f['grade'].errors['required']" > Grade is required</div>
                             </div>
                             </div>
+
+
+                            <label>Name</label>
+
+                            <div class="input-group form-group-no-border" >
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="nc-icon nc-circle-10"></i>
+                                </span>
+                              </div>
+                                <input type="text" class="form-control " placeholder="Your Name" formControlName="name">
+                                <div *ngIf="submitted && f['name'].errors" class="form-control-feedback" style="color: red">
+                                <div *ngIf="submitted && f['name'].errors['required']" >Fullname is required</div>
+                                </div>
+                            </div>
+                            <label>Email</label>
+                            <div class="input-group form-group-no-border" >
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="nc-icon nc-email-85"></i>
+                                </span>
+                              </div>
+                                <input type="email" class="form-control" placeholder="Email" formControlName="email" >
+                                <div *ngIf="submitted && f['email'].errors" class="form-control-feedback" style="color: red">
+                                    <div *ngIf="submitted && f['email'].errors['required']" > Email is required</div>
+                                    <div *ngIf="submitted && f['email'].errors['email']" > Email is invalid</div>
+                                </div>
+                            </div>
+
+                            <label>Phone / WA</label>
+                            <div class="input-group form-group-no-border">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    +62
+                                </span>
+                              </div>
+                                <input type="number" class="form-control" placeholder="Phone" formControlName="phone">
+                                <div *ngIf="submitted && f['phone'].errors" class="form-control-feedback" style="color: red">
+                                    <div *ngIf="submitted && f['phone'].errors['required']" > Phone is required</div>
+                                </div>
+                            </div>
+                            <label>School</label>
+                            <div class="input-group form-group-no-border">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="nc-icon nc-hat-3"></i>
+                                </span>
+                              </div>
+                                <input type="text" class="form-control" placeholder="School" formControlName="school" >
+                                <div *ngIf="submitted && f['school'].errors" class="form-control-feedback" style="color: red">
+                                    <div *ngIf="submitted && f['school'].errors['required']" > School is required</div>
+                                </div>
+                            </div>
+                            <label>Grade</label>
+                            <div class="input-group form-group-no-border">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="nc-icon nc-badge"></i>
+                                </span>
+                              </div>
+                              <select name="Grade"  class="form-control" formControlName="grade">
+                                <option value="12">Kelas 12</option>
+                                <option value="11">Kelas 11</option>
+                                <option value="10">Kelas 10</option>
+                              </select>
+                              <div *ngIf="submitted && f['grade'].errors" class="form-control-feedback" style="color: red;">
+                                <div *ngIf="submitted && f['grade'].errors['required']" > Grade is required</div>
+                            </div>
+                            </div>
                             <button class="btn btn-danger btn-block btn-round" type="submit">Submit</button>
                         </form>
                     </div>
-                    <h6 class=" ml-auto mr-auto" style="text-align: center;color: aliceblue;">Designed and coded by
+                    <h6 class="ml-auto mr-auto" style="text-align: center;color: aliceblue;position: absolute;">Designed and coded by
                         <img src="assets/img/Logo.png" style="width: 60px; height: 30px" class="creative-tim-logo">
                     </h6>
                 </div>
@@ -114,8 +183,8 @@
 
                     <!-- spesific -->
                     <ng-template #other_content >
-                    <div *ngIf="currSpecIdx<lenSpec">
-                        <h3 style="color: aliceblue;">this is spesific {{displayedSpec[currSpecIdx].quest}}</h3>
+                    <div *ngIf="currSpecIdx<lenSpec; else no_answer">
+                        <h3 style="color: aliceblue;">{{displayedSpec[currSpecIdx].quest}}</h3>
                         <img src="./assets/img/{{displayedSpec[currSpecIdx].pictName}}" style="width:350px; height:250px;margin-top: 10px;margin-bottom: 10px;"  alt="Illustrated Picture">
                     
                    
@@ -128,6 +197,13 @@
                         </div>
                         <ngb-progressbar type="danger" class="mt-0" [value]="(currSpecIdx/lenSpec)*100"><span class="h6 mb-0">Progress <b>{{currSpecIdx}} of {{lenSpec}}</b> ...</span></ngb-progressbar>
                     </div>
+                    <!-- No Answer of General -->
+                    </ng-template>
+                    <ng-template #no_answer >
+                      <div *ngIf="choosedProg.length==0">
+                      <h3 style="color: aliceblue;">Please answer the question thoughtfully, it seems the system can not identify your interest </h3>
+                      <a href="" style="margin:10px"><button type="button" class="btn btn-neutral btn-block btn-round" >Re-Take the test!</button></a>
+                    </div>
                     </ng-template>
 
                 </div>
@@ -135,36 +211,37 @@
                     
                 </div>
                 <!-- Jurusan -->
-                <div *ngIf="choosedProg.length!=0">
-                    <h3 style="color: aliceblue;margin: 20px;text-align: center;">Program yang kamu minati adalah <b>{{choosedProg[0].name}}</b></h3>
-                    <div class="row" style="margin: 20px;">
-                        <div class="col-md-5">
-                        <img src="./assets/img/{{choosedProg[0].pictName}}" style="width:100%; height:250px;margin-top: 10px;margin-bottom: 10px;"  alt="Illustrated Picture" alt="Random first slide">
-                        </div>
-                        <div class="col-md-7" style="color: aliceblue;">
-                            <h3>Career Prospect</h3>
-                            <p>{{choosedProg[0].career}}</p>
-                            <h3>Tuition Fee</h3>
-                            <ul>
-                                <li>{{choosedProg[0].f1}}</li>
-                                <li>{{choosedProg[0].f2}}</li>
-                              </ul>
-                              <a href="https://pmb.jgu.ac.id/" target="_blank" style="margin:3px"><button type="button" class="btn btn-neutral btn-block btn-round" >Register Yourself Here!</button></a>
-                              <a href="{{choosedProg[0].curr}}" target="_blank" ><button type="button" class="btn btn-neutral btn-block btn-round" >Download Curriculum</button></a>
-                        </div>
-                    </div>
-                
-                </div>
+                <div *ngIf="choosedProg.length!=0" id="jurusan">
+                  <h3 style="color: aliceblue;margin: 20px;text-align: center;">Program yang kamu minati adalah <b>{{choosedProg[0].name}}</b></h3>
+                  <div class="row" style="margin: 20px;">
+                      <div class="col-sm-5">
+                      <img src="./assets/img/{{choosedProg[0].pictName}}" style="width:100%; height:250px;margin-top: 10px;margin-bottom: 10px;"  alt="Illustrated Picture" alt="Random first slide">
+                      </div>
+                      <div class="col-sm-7" style="color: aliceblue;">
+                          <h3>Career Prospect</h3>
+                          <p>{{choosedProg[0].career}}</p>
+                          <h3>Tuition Fee</h3>
+                          <ul>
+                              <li>{{choosedProg[0].f1}}</li>
+                              <li>{{choosedProg[0].f2}}</li>
+                            </ul>
+                            <a href="https://pmb.jgu.ac.id/" target="_blank" style="margin:3px"><button type="button" class="btn btn-neutral btn-block btn-round" >Register Yourself Here!</button></a>
+                            <a href="{{choosedProg[0].curr}}" target="_blank" ><button type="button" class="btn btn-neutral btn-block btn-round" >Download Curriculum</button></a>
+                      </div>
+                  </div>
+              </div>
+              <!-- No Answer of Specific -->
                 <br>
-                <h6 *ngIf="obtainedData" class="ml-auto mr-auto" style="text-align: center;margin-top: 25px;color: aliceblue;">Designed and coded by
-                    <img src="assets/img/Logo.png" style="width: 60px; height: 30px" class="creative-tim-logo">
-                </h6>
-                <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); z-index:-1"></div>
+                <h6 *ngIf="obtainedData" style="text-align: center;margin-top: 25px;color: aliceblue;">Designed and coded by
+                  <img src="assets/img/Logo.png" style="width: 60px; height: 30px" class="creative-tim-logo">
+              </h6>
+                <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); z-index:-1;height: 100%;"></div>
             </div>
-            
         <!-- </div> -->
-       
+        
         
         
     </div>
+   
+
 </div>

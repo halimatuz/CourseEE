@@ -40,7 +40,7 @@ export class ComponentsComponent implements OnInit {
   test : Date = new Date();
     focus;
     focus1;
-    obtainedData = false;
+    obtainedData = true;
 
   submitted=false;
   idSession='';
@@ -89,7 +89,7 @@ export class ComponentsComponent implements OnInit {
         }else{
          this.studService.create(this.formSiswa.value).then(docRef => {
           this.idSession=docRef.id;
-          this.obtainedData=true;
+          this.obtainedData=false;
       })
       .catch(error => console.error("Error adding document: ", error)) 
         }
