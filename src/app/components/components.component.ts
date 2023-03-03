@@ -28,11 +28,13 @@ export class ComponentsComponent implements OnInit {
   lenGen=0;
   ChoosedSpesific=[];
 
+  dum=0;
+
   specific? : Specific[];
   displayedSpec : Specific[]=[];
   currSpecIdx = 0;
   lenSpec =0;
-  point = [0,0,0,0,0,0,0,0,0,0];
+  point = [0,0,0,0,0,0,0,0,0,0,0];
   
   prog?: Program[];
   choosedProg : Program[]=[];
@@ -40,7 +42,7 @@ export class ComponentsComponent implements OnInit {
   test : Date = new Date();
     focus;
     focus1;
-    obtainedData = true;
+    obtainedData = false;
 
   submitted=false;
   idSession='';
@@ -64,6 +66,7 @@ export class ComponentsComponent implements OnInit {
             this.readGeneral();
             this.readSpec();
             this.readProg();
+            
         }
  
     ngOnInit(): void {
@@ -89,7 +92,7 @@ export class ComponentsComponent implements OnInit {
         }else{
          this.studService.create(this.formSiswa.value).then(docRef => {
           this.idSession=docRef.id;
-          this.obtainedData=false;
+          this.obtainedData=true;
       })
       .catch(error => console.error("Error adding document: ", error)) 
         }
@@ -145,6 +148,7 @@ export class ComponentsComponent implements OnInit {
         ).subscribe(data => {
           this.specific = data;
           this.lenSpec = this.specific.length;
+          
         });
       }
 
@@ -168,7 +172,7 @@ export class ComponentsComponent implements OnInit {
           )
         ).subscribe(data => {
           this.prog = data;
-          console.log(this.prog)
+          // this.choosedProg =data;
         });
 
       }
