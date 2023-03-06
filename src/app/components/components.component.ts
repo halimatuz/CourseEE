@@ -20,8 +20,6 @@ import { AbstractControl, FormBuilder, FormGroup, Validators, FormControl } from
     `]
 })
 
-
-
 export class ComponentsComponent implements OnInit {
   general?: General[];
   currentIndex = 0;

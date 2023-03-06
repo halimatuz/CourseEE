@@ -142,9 +142,10 @@
                     
                     
                 <!-- Jurusan -->
-                <div *ngIf="choosedProg.length!=0" id="jurusan">
-                  <h3 style="color: aliceblue;margin: 20px;text-align: center;">Program yang kamu minati adalah <b>{{choosedProg[dum].name}}</b></h3>
-                  <div class="row" style="margin: 20px;">
+                <div *ngIf="choosedProg.length!=0" id="jurusan" >
+
+                  <h3 style="color: aliceblue;margin: 20px;text-align: center;">Program yang cocok dengan hasil tes kamu adalah <b>{{choosedProg[dum].name}}</b></h3>
+                  <div class="row" style="margin: 20px;position: relative;">
                       <div class="col-sm-5">
                       <img src="./assets/img/{{choosedProg[dum].pictName}}" style="width:100%; height:250px;margin-top: 10px;margin-bottom: 10px;"  alt="Illustrated Picture" alt="Random first slide">
                       </div>
@@ -156,7 +157,7 @@
                               <li>{{choosedProg[dum].f1}}</li>
                               <li>{{choosedProg[dum].f2}}</li>
                             </ul>
-                            <a href="https://pmb.jgu.ac.id/" target="_blank" style="margin:3px"><button type="button" class="btn btn-neutral btn-block btn-round" >Register Yourself Here!</button></a>
+                            <a href="https://wa.me/6283802434392?text=Hi,%20Saya%20tertarik%20di%20jurusan%20{{choosedProg[dum].name}},%20boleh%20share%20infonya?" target="_blank" style="margin:3px"><button type="button" class="btn btn-neutral btn-block btn-round" >Consult With Us Here!</button></a>
                             <a href="{{choosedProg[dum].curr}}" target="_blank" ><button type="button" class="btn btn-neutral btn-block btn-round" >Download Curriculum</button></a>
                       </div>
                   </div>
