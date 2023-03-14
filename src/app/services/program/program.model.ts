@@ -7,4 +7,5 @@ export class Program {
     pictName?: string;
     f1?: string;
     f2?: string;   
+    prospect?:[];
 }

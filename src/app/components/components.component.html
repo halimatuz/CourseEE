@@ -163,18 +163,23 @@
                 </div>
                 <div class="name">
                     <h4 class="title">Program yang sesuai dengan hasil tes kamu adalah<br /></h4>
-                    <h6 class="description">{{choosedProg[dum].name}}</h6>
+                    <h6 class="description" style="font-size: 18px;">{{choosedProg[dum].name}}</h6>
                 </div>
             </div>
             <div class="row" >
                 <div class="col-md-8 ml-auto mr-auto ">
                     <p style="white-space: pre-wrap;text-align: justify;margin: 10px;">{{choosedProg[dum].career}}</p>
-                    <h3 style="text-align: center;">Struktur Biaya</h3>
+                    <h3 style="text-align: center; font-size: 1.6em;" >Prospek Karir</h3>
+                    <ul>
+                      <li *ngFor="let x of choosedProg[dum].prospect">{{x}}</li>
+                    </ul>
+                    <h3 style="text-align: center; font-size: 1.6em;" >Struktur Biaya</h3>
                     <br>
                     <ul>
-                      <li>{{choosedProg[dum].f1}}</li>
-                      <li>{{choosedProg[dum].f2}}</li>
+                      <li>{{choosedProg[dum].f1}}*</li>
+                      <li>{{choosedProg[dum].f2}}*</li>
                     </ul>
+                    <p style="font-size: 10px;margin: 10px;">*Scholarship Available, TnC Applied</p>
                     <a href="https://wa.me/6283802434392?text=Hi,%20Saya%20tertarik%20di%20jurusan%20{{choosedProg[dum].name}},%20boleh%20share%20infonya?" target="_blank" style="margin:3px">
                       <button type="button" class="btn btn-danger btn-block btn-round" >Consult With Us Here!</button></a>
                     <a href="{{choosedProg[dum].curr}}" target="_blank" >
