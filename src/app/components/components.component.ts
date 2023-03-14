@@ -44,6 +44,7 @@ export class ComponentsComponent implements OnInit {
 
   submitted=false;
   idSession='';
+  str: String='';
 
   formSiswa: FormGroup = new FormGroup({
     name: new FormControl(''),
@@ -171,6 +172,7 @@ export class ComponentsComponent implements OnInit {
         ).subscribe(data => {
           this.prog = data;
           // this.choosedProg =data;
+          // console.log(this.prog)
         });
 
       }
@@ -191,6 +193,7 @@ export class ComponentsComponent implements OnInit {
             if(j.code==idxMax)
             this.choosedProg.push(j);
           }
+          
           console.log(this.choosedProg);
           if(this.idSession){
             this.studService.update(this.idSession, { interest: this.choosedProg[0].code })

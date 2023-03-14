@@ -1,5 +1,5 @@
 <div class="wrapper"  >
-    <div class="page-header section-dark" style="background-image: url('assets/img/landscape2.jpg')" >
+    <div *ngIf="choosedProg.length==0" class="page-header section-dark" style="background-image: url('assets/img/landscape2.jpg')" >
         
         <!-- <div class="filter"></div> -->
         
@@ -94,8 +94,8 @@
                  </div>
                  
               </div>
-              
-                    <div *ngIf="obtainedData" class="title-brand" style="margin-top: 70px;">
+                    <div *ngIf="obtainedData">
+                    <div  class="title-brand" style="margin-top: 70px;">
                        
                     <div *ngIf="currentIndex<lenGen;else other_content">
                         <h3 style="color: aliceblue;">{{general[currentIndex].quest}}</h3>
@@ -135,37 +135,13 @@
                       <a href="" style="margin:10px"><button type="button" class="btn btn-neutral btn-block btn-round" >Re-Take the test!</button></a>
                     </div>
                     </ng-template>
-                    <h6 *ngIf="choosedProg.length==0"  style="text-align: center;margin-top: 20px;color: aliceblue; bottom:10px">Designed and coded by
-                      <img src="assets/img/Logo.png" style="width: 60px; height: 30px" class="creative-tim-logo">
-                    </h6>
+                    
                 </div>
-                    
-                    
-                <!-- Jurusan -->
-                <div *ngIf="choosedProg.length!=0" id="jurusan" >
-
-                  <h3 style="color: aliceblue;margin: 20px;text-align: center;">Program yang cocok dengan hasil tes kamu adalah <b>{{choosedProg[dum].name}}</b></h3>
-                  <div class="row" style="margin: 20px;position: relative;">
-                      <div class="col-sm-5">
-                      <img src="./assets/img/{{choosedProg[dum].pictName}}" style="width:100%; height:250px;margin-top: 10px;margin-bottom: 10px;"  alt="Illustrated Picture" alt="Random first slide">
-                      </div>
-                      <div class="col-sm-7" style="color: aliceblue;">
-                          <h3>Career Prospect</h3>
-                          <p>{{choosedProg[dum].career}}</p>
-                          <h3>Tuition Fee</h3>
-                          <ul>
-                              <li>{{choosedProg[dum].f1}}</li>
-                              <li>{{choosedProg[dum].f2}}</li>
-                            </ul>
-                            <a href="https://wa.me/6283802434392?text=Hi,%20Saya%20tertarik%20di%20jurusan%20{{choosedProg[dum].name}},%20boleh%20share%20infonya?" target="_blank" style="margin:3px"><button type="button" class="btn btn-neutral btn-block btn-round" >Consult With Us Here!</button></a>
-                            <a href="{{choosedProg[dum].curr}}" target="_blank" ><button type="button" class="btn btn-neutral btn-block btn-round" >Download Curriculum</button></a>
-                      </div>
-                  </div>
-                  <h6 style="text-align: center;margin-top: 20px;color: aliceblue;">Designed and coded by
-                    <img src="assets/img/Logo.png" style="width: 60px; height: 30px" class="creative-tim-logo">
-                </h6>
-              </div>
-                <br>
+                <h6 *ngIf="choosedProg.length==0"  style="text-align: center;color: aliceblue; position: absolute;margin: 0 auto; left:0; right:0;bottom: 20px;">Designed and coded by
+                  <img src="assets/img/Logo.png" style="width: 60px; height: 30px" class="creative-tim-logo">
+              </h6>
+                </div>
+                  
                 
                 <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); z-index:-1;height: 100%;"></div>
             </div>
@@ -174,6 +150,47 @@
         
         
     </div>
+    <!-- Jurusan -->
+    <div *ngIf="choosedProg.length!=0">
+      <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/JGU.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section profile-content" style="padding:20px">
+        <div class="container">
+            <div class="owner">
+                <div class="avatar">
+                    <img src="./assets/img/{{choosedProg[dum].pictName}}" alt="Circle Image" class="img-thumbnail img-no-padding img-responsive" style="width: 300px;height: 150px;">
+                </div>
+                <div class="name">
+                    <h4 class="title">Program yang sesuai dengan hasil tes kamu adalah<br /></h4>
+                    <h6 class="description">{{choosedProg[dum].name}}</h6>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-md-8 ml-auto mr-auto ">
+                    <p style="white-space: pre-wrap;text-align: justify;margin: 10px;">{{choosedProg[dum].career}}</p>
+                    <h3 style="text-align: center;">Struktur Biaya</h3>
+                    <br>
+                    <ul>
+                      <li>{{choosedProg[dum].f1}}</li>
+                      <li>{{choosedProg[dum].f2}}</li>
+                    </ul>
+                    <a href="https://wa.me/6283802434392?text=Hi,%20Saya%20tertarik%20di%20jurusan%20{{choosedProg[dum].name}},%20boleh%20share%20infonya?" target="_blank" style="margin:3px">
+                      <button type="button" class="btn btn-danger btn-block btn-round" >Consult With Us Here!</button></a>
+                    <a href="{{choosedProg[dum].curr}}" target="_blank" >
+                      <button type="button" class="btn btn-danger btn-block btn-round" >Download Curriculum</button></a>
+                      <br>
+                      <h6  style="text-align: center;margin-top: 50px;">Designed and coded by
+                        <img src="assets/img/Logo.png" style="width: 60px; height: 30px" class="creative-tim-logo">
+                      </h6>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+  </div>
+  <!-- ?end of jurusan -->
    
 
 </div>

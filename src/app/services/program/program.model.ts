@@ -3,7 +3,7 @@ export class Program {
     curr?:string;
     code? : number;
     name?: string;
-    career?: number;
+    career?: string;
     pictName?: string;
     f1?: string;
     f2?: string;   
