@@ -6,4 +6,5 @@ export class Student {
     school?: string;
     grade?: string;
     interest?: number;
+    created_at?: string;
 }

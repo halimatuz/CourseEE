@@ -77,6 +77,7 @@ export class ComponentsComponent implements OnInit {
           school : ['', Validators.required],
           grade : ['', Validators.required],
           interest : [-1],
+          created_at : new Date().toLocaleString(),
         }
       );
       }
